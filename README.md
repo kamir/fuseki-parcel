@@ -17,22 +17,22 @@ mvn install
 
 1. Create the Parcel & CSD:
 ```sh
-$ cd /tmp
+cd /tmp
 # Load the Fuseki Release package
-$ git clone https://github.com/apache/jena
-$ cd jena
-$ mvn clean install
-$ cd /tmp
-$ git clone http://github.com/kamir/fuseki-parcel
-$ cd fuseki-parcel
-$ POINT_VERSION=5 VALIDATOR_DIR=/tmp/cm_ext ./build-parcel.sh /tmp/fuseki-parcel/fuseki-assembly/target/fuseki-*-SNAPSHOT-bin.tar.gz
-$ VALIDATOR_DIR=/tmp/cm_ext ./build-csd.sh
+git clone https://github.com/apache/jena
+cd jena
+mvn clean install
+cd /tmp
+git clone http://github.com/kamir/fuseki-parcel
+cd fuseki-parcel
+POINT_VERSION=5 VALIDATOR_DIR=/tmp/cm_ext ./build-parcel.sh /tmp/fuseki-parcel/fuseki-assembly/target/fuseki-*-SNAPSHOT-bin.tar.gz
+VALIDATOR_DIR=/tmp/cm_ext ./build-csd.sh
 ```
 
 2. Serve Parcel using Python
 ```sh
-$ cd build-parcel
-$ python -m SimpleHTTPServer 14641
+cd build-parcel
+python -m SimpleHTTPServer 14641
 # navigate to Cloudera Manager -> Parcels -> Edit Settings
 # Add fqdn:14641 to list of urls
 # install the Fuseki parcel
@@ -41,13 +41,13 @@ $ python -m SimpleHTTPServer 14641
 4. Move CSD to Cloudera Manager's CSD Repo
 ```sh
 # transfer build-csd/FUSEKI-1.0.jar to CM's host
-$ cp FUSEKI-1.0.jar /opt/cloudera/csd
+cp FUSEKI-1.0.jar /opt/cloudera/csd
 $ mkdir /opt/cloudera/csd/FUSEKI-1.0
-$ cp FUSEKI-1.0.jar /opt/cloudera/csd/FUSEKI-1.0
-$ cd /opt/cloudera/csd/FUSEKI-1.0
-$ jar xvf FUSEKI-1.0.jar
-$ rm -f FUSEKI-1.0.jar
-$ sudo service cloudera-scm-server restart
+cp FUSEKI-1.0.jar /opt/cloudera/csd/FUSEKI-1.0
+cd /opt/cloudera/csd/FUSEKI-1.0
+jar xvf FUSEKI-1.0.jar
+rm -f FUSEKI-1.0.jar
+sudo service cloudera-scm-server restart
 # Wait a min, go to Cloudera Manager -> Add a Service -> FUSEKI
 ```
 
