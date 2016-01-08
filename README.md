@@ -26,6 +26,8 @@ cd jena-fuseki2
 mvn clean install
 ```
 
+Note: You should add this to your POM file to have the latest snaphsots involved.
+
 ## Create the Parcel & CSD:
 ```sh
 cd /tmp
