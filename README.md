@@ -64,21 +64,16 @@ python -m SimpleHTTPServer 14641
 ```
 
 Now we can navigate to the Cloudera Manager -> Parcels -> Edit Settings page. Please add 
-the location of the new parcel provider (FQDN:PORT) to list of urls. 
+the location of the new parcel provider (FQDN:PORT) to the list of urls. The new Fuseki-Parcel can be installed now. 
 
-The Fuseki-Parcel can be installed now. 
-
-## Deploy the CSD to Cloudera Manager's CSD Repository
 ```sh
-# transfer build-csd/FUSEKI-1.0.jar to CM's host
-cp FUSEKI-1.0.jar /opt/cloudera/csd
-$ mkdir /opt/cloudera/csd/FUSEKI-1.0
-cp FUSEKI-1.0.jar /opt/cloudera/csd/FUSEKI-1.0
-cd /opt/cloudera/csd/FUSEKI-1.0
-jar xvf FUSEKI-1.0.jar
-rm -f FUSEKI-1.0.jar
+# transfer build-csd/FUSEKI-2.3.jar to CM's host
+#
+scp FUSEKI-2.3.jar /opt/cloudera/csd
 sudo service cloudera-scm-server restart
+#
 # Wait a min, go to Cloudera Manager -> Add a Service -> FUSEKI
+#
 ```
 
 # Pending items
