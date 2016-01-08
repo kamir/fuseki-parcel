@@ -1,0 +1,17 @@
+{
+    "parcels": [
+        {
+            "hash": "3c83ce9f6d0ad33e539cef414d918b379553cd5d",
+            "depends": "CDH (>= 5.0), CDH (<< 6.0)",
+            "parcelName": "FUSEKI-2.3.1.fuseki.p0.1-el6.parcel",
+            "components": [
+                {
+                    "pkg_version": "2.3.1",
+                    "version": "2.3.1",
+                    "name": "fuseki"
+                }
+            ]
+        }
+    ],
+    "lastUpdated": 1452262560879
+}
