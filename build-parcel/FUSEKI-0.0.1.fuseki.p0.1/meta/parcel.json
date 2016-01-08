@@ -1,0 +1,34 @@
+{
+  "schema_version":     1,
+  "name":               "FUSEKI",
+  "version":            "<VERSION-FULL>",
+  "setActiveSymlink":   true,
+
+  "depends": "CDH (>= 5.0), CDH (<< 6.0)",
+  "provides": ["fuseki"],
+  "scripts": {
+    "defines": "fuseki_env.sh"
+  },
+
+  "packages": [{
+    "name": "fuseki",
+    "version": "<VERSION-FULL>"
+  }],
+
+  "components": [{
+    "name":    "fuseki",
+    "version": "<VERSION-SHORT>",
+    "pkg_version": "<VERSION-SHORT>"
+  }],
+
+  "users": {
+    "nifi": {
+      "longname"    : "Fuseki",
+      "home"        : "/var/lib/fuseki",
+      "shell"       : "/bin/bash",
+      "extra_groups": []
+    }
+  },
+
+  "groups": []
+}

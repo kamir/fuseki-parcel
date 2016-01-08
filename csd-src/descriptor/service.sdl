@@ -1,0 +1,45 @@
+{
+  "name" : "FUSEKI",
+  "label" : "FUSEKI",
+  "description" : "The Fuseki Service (build on Apache Jena)",
+  "version" : "2.3",
+  "icon" : "images/etcs.png",
+  "rolesWithExternalLinks" : ["FUSEKI_SERVICE"],
+  "runAs" : { 
+    "user" : "root",
+    "group" : "root"
+   },  
+   "roles" : [
+    {
+       "name" : "FUSEKI_SERVICE",
+       "label" : "Fuseki Service",
+       "pluralLabel" : "Fuseki Services",
+       "parameters" : [
+        {
+          "name" : "port_num",
+          "label" : "Fuseki Web UI port",
+          "description" : "The Fuseki Web UI port number",
+          "required" : "true",
+          "type" : "port",
+          "default" : 9200
+        }
+        ],
+        "externalLink" : {
+          "name" : "fuseki_web_ui",
+          "label" : "Fuseki Web UI UI",
+          "url" : "http://${host}:${port_num}$"
+        },
+        "topology" : {
+          "minInstances" : "1",
+          "maxInstances" : "1"
+        },
+        "startRunner" : {
+          "program" : "scripts/control.sh",
+          "args" : [ "start" ],
+          "environmentVariables" : {
+           "WEBSERVER_PORT" : "${port_num}"         
+          }
+        }
+    }
+  ]
+}
