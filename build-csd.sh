@@ -5,7 +5,7 @@ set -e
 # The parcel name and version reflects the name of the service which is shipped.
 #
 PARCELNAME=FUSEKI
-PARCELVERSION=2.1
+PARCELVERSION=2.3
 
 
 if [[ $# -ne 0 ]]; then

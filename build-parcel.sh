@@ -1,24 +1,30 @@
 #!/bin/bash
 set -e
 
-if [[ $# -ne 1 ]]; then
-  echo "Usage: $0 <fusseki-assembly-bin.tar.gz>"
-  exit 1
-fi
-
-FUSEKI_TAR_PATH=$1
-FUSEKI_TAR_NAME=$(basename $FUSEKI_TAR_PATH)
-
-VALIDATOR_DIR=${VALIDATOR_DIR:-~/trash/cm_ext}
-
+#
+# The parcel name and version reflects the name of the service which is shipped.
+#
+PARCELNAME=FUSEKI
+PARCELVERSION=2.3
+VALIDATOR_DIR=${VALIDATOR_DIR:-/tmp/cm_ext}
 POINT_VERSION=${POINT_VERSION:-1}
 
 SRC_DIR=${SRC_DIR:-parcel-src}
 BUILD_DIR=${BUILD_DIR:-build-parcel}
-
-PARCEL_NAME=$(echo FUSEKI-0.0.${POINT_VERSION}.fuseki.p0.${POINT_VERSION})
-SHORT_VERSION=$(echo 0.0.${POINT_VERSION})
+PARCEL_NAME=$(echo FUSEKI-${PARCELVERSION}.${POINT_VERSION}.fuseki.p0.${POINT_VERSION})
+SHORT_VERSION=$(echo ${PARCELVERSION}.${POINT_VERSION})
 FULL_VERSION=$(echo ${SHORT_VERSION}.fuseki.p0.${POINT_VERSION})
+
+echo $PARCELNAME
+echo $PARCELVERSION
+echo $VALIDATOR_DIR
+echo $POINT_VERSION
+
+echo $SRC_DIR
+echo $BUILD_DIR
+echo $PARCEL_NAME
+echo $SHORT_VERSION
+echo $FULL_VERSION
 
 # Make Build Directory
 if [ -d $BUILD_DIR ];
@@ -40,6 +46,10 @@ rm -f $FUSEKI_TAR_NAME
 mv fuseki-*/* .
 rmdir fuseki-*
 chmod -R 755 ./lib ./conf
+
+
+
+
 
 # move into BUILD_DIR
 cd ..
