@@ -17,16 +17,16 @@ cd cm_ext
 mvn clean compile install -Dmaven.test.skip=true
 ```
 
+Note: You should add this to your POM file to have the latest snaphsots involved.
+
 `apache/jena-fuseki2`
 ```sh
 cd /tmp
 # Load the Fuseki Release package
 git clone https://github.com/apache/jena
-cd jena-fuseki2
-mvn clean install
+cd jena/jena-fuseki2
+mvn clean install package -U
 ```
-
-Note: You should add this to your POM file to have the latest snaphsots involved.
 
 ## Create the Parcel & CSD:
 ```sh
@@ -61,7 +61,6 @@ sudo service cloudera-scm-server restart
 
 # Pending items
 - Currently `FUSEKI` runs under the `root` user
-- Expose config options under Cloudera Manager
-  - Conf folder from parcels is used, this needs to be migrated to ConfigWriter
+- Expose more config options under Cloudera Manager
 - Expose metrics from FUSEKI
 
