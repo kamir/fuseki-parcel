@@ -7,7 +7,9 @@ The repository provides all you need to create a parcel for automatic installati
 ---------------
 
 # Installation 
-## Prerequisites: `cloudera/cm_ext`
+## Prerequisites: 
+
+`cloudera/cm_ext`
 ```sh
 cd /tmp
 git clone https://github.com/cloudera/cm_ext
@@ -15,13 +17,17 @@ cd cm_ext/validator
 mvn install
 ```
 
-## Create the Parcel & CSD:
+`apache/jena`
 ```sh
 cd /tmp
 # Load the Fuseki Release package
 git clone https://github.com/apache/jena
 cd jena
 mvn clean install
+```
+
+## Create the Parcel & CSD:
+```sh
 cd /tmp
 git clone http://github.com/kamir/fuseki-parcel
 cd fuseki-parcel
