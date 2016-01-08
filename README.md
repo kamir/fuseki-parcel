@@ -100,4 +100,16 @@ sudo service cloudera-scm-server restart
 - Currently `FUSEKI` runs under the `root` user
 - Expose more config options under Cloudera Manager
 - Expose metrics from FUSEKI
+- Only one Fuseki Service is possible per cluster with this parcel.
+
+# Use-Cases:
+The Fuseki-Server should be installed on a Gateway node to enable internal and external access.
+
+Primarily it is used for METADATA exposure as RDF graph. We use the Etosha tools to export Hive and HDFS metadata.
+Other sources are Cloudera Manager and Cloudera Navigator. This way we can savely control which details of highly
+sensitive internal metadata can be used by external tools in a standardized way.
+
+
+
+
 
