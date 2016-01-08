@@ -57,7 +57,28 @@ POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-parcel.sh .
 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-csd.sh
 ```
 
-Note: You have to change the path $VALIDATOR_DIR.
+Note: You have to change the path $VALIDATOR_DIR. In case you use the Cloudera Quickstart VM
+these commands will work:
+
+## Create the Parcel & CSD:
+```sh
+cd tmp
+git clone http://github.com/kamir/fuseki-parcel
+cd fuseki-parcel
+POINT_VERSION=1 VALIDATOR_DIR=/home/cloudera/tmp/cm_ext ./build-parcel.sh ./../jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
+VALIDATOR_DIR=/home/cloudera/tmp/cm_ext ./build-csd.sh
+```
+
+
+## Create the Parcel & CSD:
+```sh
+cd tmp
+git clone http://github.com/kamir/fuseki-parcel
+cd fuseki-parcel
+POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-parcel.sh ./../jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
+VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-csd.sh
+```
+
 
 ## Serve Parcel using Python
 ```sh
