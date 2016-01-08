@@ -13,18 +13,20 @@ The repository provides all you need to create a parcel for automatic installati
 ```sh
 cd /tmp
 git clone https://github.com/cloudera/cm_ext
-cd cm_ext/validator
-mvn install
+cd cm_ext
+mvn clean compile install -Dmaven.test.skip=true
 ```
 
-`apache/jena`
+`apache/jena-fuseki2`
 ```sh
 cd /tmp
 # Load the Fuseki Release package
 git clone https://github.com/apache/jena
-cd jena
+cd jena-fuseki2
 mvn clean install
 ```
+
+Note: You should add this to your POM file to have the latest snaphsots involved.
 
 ## Create the Parcel & CSD:
 ```sh
