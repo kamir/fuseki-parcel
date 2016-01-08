@@ -7,7 +7,7 @@ The repository provides all you need to create a parcel for automatic installati
 ---------------
 
 # Installation 
-0. Prerequisites: `cloudera/cm_ext`
+## Prerequisites: `cloudera/cm_ext`
 ```sh
 cd /tmp
 git clone https://github.com/cloudera/cm_ext
@@ -15,7 +15,7 @@ cd cm_ext/validator
 mvn install
 ```
 
-1. Create the Parcel & CSD:
+## Create the Parcel & CSD:
 ```sh
 cd /tmp
 # Load the Fuseki Release package
@@ -29,7 +29,7 @@ POINT_VERSION=5 VALIDATOR_DIR=/tmp/cm_ext ./build-parcel.sh /tmp/fuseki-parcel/f
 VALIDATOR_DIR=/tmp/cm_ext ./build-csd.sh
 ```
 
-2. Serve Parcel using Python
+## Serve Parcel using Python
 ```sh
 cd build-parcel
 python -m SimpleHTTPServer 14641
@@ -38,7 +38,7 @@ python -m SimpleHTTPServer 14641
 # install the Fuseki parcel
 ```
 
-4. Move CSD to Cloudera Manager's CSD Repo
+## Move CSD to Cloudera Manager's CSD Repo
 ```sh
 # transfer build-csd/FUSEKI-1.0.jar to CM's host
 cp FUSEKI-1.0.jar /opt/cloudera/csd
@@ -51,7 +51,7 @@ sudo service cloudera-scm-server restart
 # Wait a min, go to Cloudera Manager -> Add a Service -> FUSEKI
 ```
 
-## Pending items
+# Pending items
 - Currently `FUSEKI` runs under the `root` user
 - Expose config options under Cloudera Manager
   - Conf folder from parcels is used, this needs to be migrated to ConfigWriter
