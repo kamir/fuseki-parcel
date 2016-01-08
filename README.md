@@ -1,6 +1,5 @@
 # Fuseki-Parcel
-===============
-
+---------------
 Let's deploy Apache Fuseki servers in a CDH cluster via Cloudera Manager.
 This project was inspired also by: NiFi Parcel.
 
