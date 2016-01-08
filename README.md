@@ -1,8 +1,9 @@
 # Fuseki-Parcel
-Let's deploy Apache Fuseki servers in a CDH cluster via Cloudera Manager.
+Let's deploy Apache Fuseki services in a CDH cluster via Cloudera Manager.
 
-The repository provides all you need to create a parcel (see: https://github.com/cloudera/cm_ext) for
-installation Apache Fuseki as a service manageble by Cloudera Manager.
+The repository provides all you need to create a parcel for automatic installation of Apache Fuseki as a service manageble by Cloudera Manager (see: https://github.com/cloudera/cm_ext for more details about parcels).
+
+
 ---------------
 
 # Installation 
