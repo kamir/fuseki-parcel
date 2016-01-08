@@ -13,8 +13,8 @@ The repository provides all you need to create a parcel for automatic installati
 ```sh
 cd /tmp
 git clone https://github.com/cloudera/cm_ext
-cd cm_ext/validator
-mvn install
+cd cm_ext
+mvn clean compile install -Dmaven.test.skip=true
 ```
 
 `apache/jena`
