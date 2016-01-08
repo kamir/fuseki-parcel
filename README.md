@@ -17,16 +17,34 @@ cd cm_ext
 mvn clean compile install -Dmaven.test.skip=true
 ```
 
-Note: You should add this to your POM file to have the latest snaphsots involved.
+Note: You should add this section to the <repoisitories/> in your POM file after cloning 
+the Apache Jena project, to have the latest snaphsots involved.
+
+```xml
+  <repository>
+    <id>apache-repo-snapshots</id>
+    <url>https://repository.apache.org/content/repositories/snapshots/</url>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+```
 
 `apache/jena-fuseki2`
 ```sh
 cd /tmp
-# Load the Fuseki Release package
 git clone https://github.com/apache/jena
+#
+# See note above !
+#
 cd jena/jena-fuseki2
 mvn clean install package -U
 ```
+
+Now we are ready to build the CSD and the Parcel.
 
 ## Create the Parcel & CSD:
 ```sh
