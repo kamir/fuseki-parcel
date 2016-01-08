@@ -9,9 +9,11 @@ The repository provides all you need to create a parcel for automatic installati
 # Installation 
 ## Prerequisites: 
 
+Start in an empty directory, such as YOUR_WORK_DIR/tmp.
+
 `cloudera/cm_ext`
 ```sh
-cd /tmp
+cd tmp
 git clone https://github.com/cloudera/cm_ext
 cd cm_ext
 mvn clean compile install -Dmaven.test.skip=true
@@ -35,7 +37,7 @@ the Apache Jena project, to have the latest snaphsots involved.
 
 `apache/jena-fuseki2`
 ```sh
-cd /tmp
+cd tmp
 git clone https://github.com/apache/jena
 #
 # See note above !
@@ -48,7 +50,7 @@ Now we are ready to build the Parcel and the CSD.
 
 ## Create the Parcel & CSD:
 ```sh
-cd /tmp
+cd tmp
 git clone http://github.com/kamir/fuseki-parcel
 cd fuseki-parcel
 POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-parcel.sh ./../jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
