@@ -17,12 +17,12 @@ cd cm_ext
 mvn clean compile install -Dmaven.test.skip=true
 ```
 
-`apache/jena`
+`apache/jena-fuseki2`
 ```sh
 cd /tmp
 # Load the Fuseki Release package
 git clone https://github.com/apache/jena
-cd jena
+cd jena-fuseki2
 mvn clean install
 ```
 
