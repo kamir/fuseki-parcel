@@ -56,8 +56,9 @@ cd fuseki-parcel
 POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-parcel.sh ./../jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-csd.sh
 ```
-Note: You have to change the path $VALIDATOR_DIR. In case you use the Cloudera Quickstart VM
-these commands will work:
+Note: You have to change the path $VALIDATOR_DIR. 
+
+In case you use the Cloudera Quickstart VM these commands will work:
 ```sh
 cd tmp
 git clone http://github.com/kamir/fuseki-parcel
@@ -65,7 +66,10 @@ cd fuseki-parcel
 POINT_VERSION=1 VALIDATOR_DIR=/home/cloudera/tmp/cm_ext ./build-parcel.sh ./../jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
 VALIDATOR_DIR=/home/cloudera/tmp/cm_ext ./build-csd.sh
 ```
-
+Additionally, you have to install Java 8 to compile Jena. To skip this issue,
+we rely on the prebuild version (Apache Fuseki 2.3) which is part of this project already.
+No need to download or to compile for now, but we want to be prepared for later, especially
+id new featutes arrive in Fuseki land. 
 
 ## Create the Parcel & CSD:
 ```sh
