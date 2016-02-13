@@ -11,7 +11,6 @@ The repository provides all you need to create a parcel for automatic installati
 
 Start in an empty directory, such as YOUR_WORK_DIR/tmp.
 
-`cloudera/cm_ext`
 ```sh
 cd tmp
 git clone https://github.com/cloudera/cm_ext
