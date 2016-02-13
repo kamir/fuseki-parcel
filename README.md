@@ -9,9 +9,9 @@ Known Issues:
 - The main folder is to big for shipping it in the CSV file => therefore we deploy it as parcel separately
 - The Fuseki client needs Ruby (sudo yum install ruby)
 - Fuseki Server need Java8 
- '''
+```sh
  sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u72-b15/jdk-8u72-linux-x64.tar.gz"
- '''
+```
 - the path to Java8 is provided to the start script as a parameter "Private_JDK". 
 ---------------
 
