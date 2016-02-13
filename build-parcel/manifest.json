@@ -1,7 +1,7 @@
 {
     "parcels": [
         {
-            "hash": "3c83ce9f6d0ad33e539cef414d918b379553cd5d",
+            "hash": "bdd6cc42f68151ca8bacf7706f931c725b0b8907",
             "depends": "CDH (>= 5.0), CDH (<< 6.0)",
             "parcelName": "FUSEKI-2.3.1.fuseki.p0.1-el6.parcel",
             "components": [
@@ -13,5 +13,5 @@
             ]
         }
     ],
-    "lastUpdated": 1452262560879
+    "lastUpdated": 1455389722823
 }

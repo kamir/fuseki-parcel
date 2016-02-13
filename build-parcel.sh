@@ -1,4 +1,12 @@
 #!/bin/bash
+#
+# We must run two commands ..
+#
+# POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/fuseki-parcel/tmp/cm_ext ./build-parcel.sh tmp/jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
+# POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/fuseki-parcel/tmp/cm_ext ./build-csd.sh
+#
+#
+#
 set -e
 
 if [[ $# -ne 1 ]]; then
@@ -34,7 +42,7 @@ PARCEL_NAME=$(echo FUSEKI-${PARCELVERSION}.${POINT_VERSION}.fuseki.p0.${POINT_VE
 SHORT_VERSION=$(echo ${PARCELVERSION}.${POINT_VERSION})
 FULL_VERSION=$(echo ${SHORT_VERSION}.fuseki.p0.${POINT_VERSION})
 
-FUSEKI_BINARY_HOME_PATH=./csd-src
+FUSEKI_CSD_HOME_PATH=./csd-src
 
 #
 # Is Validator available ?
@@ -66,7 +74,7 @@ echo "PARCEL Name:      $PARCEL_NAME"
 echo "SHORT Version:    $SHORT_VERSION"
 echo "FULL Version:     $FULL_VERSION"
 echo
-echo "FUSEKI BIN HOME:  $FUSEKI_BINARY_HOME_PATH"
+echo "FUSEKI CSD HOME:  $FUSEKI_CSD_HOME_PATH"
 echo
 
 # Clean up Build Directory
@@ -86,7 +94,8 @@ cp -r $SRC_DIR $BUILD_DIR/$PARCEL_NAME
 #
 # For now we use the "pre packaged binaries for Fuseki 2.3
 #
-cp -r $FUSEKI_BINARY_HOME_PATH/main $BUILD_DIR/$PARCEL_NAME
+cp -r $FUSEKI_CSD_HOME_PATH/images $BUILD_DIR/$PARCEL_NAME
+cp -r $FUSEKI_CSD_HOME_PATH/scripts $BUILD_DIR/$PARCEL_NAME
 
 cd $BUILD_DIR
 
@@ -107,6 +116,8 @@ ls $PARCEL_NAME
 echo
 echo "[OK] PREPARATION IS DONE."
 echo
+
+echo "VALIDATOR PATH MUST be absolute !!! "
 
 # validate directory
 java -jar $VALIDATOR_DIR/validator/target/validator.jar \

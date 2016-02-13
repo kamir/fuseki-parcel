@@ -1,9 +1,9 @@
 {
   "name" : "FUSEKI",
-  "label" : "FUSEKI",
+  "label" : "Fuseki 2.3",
   "description" : "The Fuseki Service (build on Apache Jena)",
   "version" : "2.3",
-  "icon" : "images/etcs.png",
+  "icon" : "images/etcs-logo.png",
   "rolesWithExternalLinks" : ["FUSEKI_SERVICE"],
   "runAs" : { 
     "user" : "root",
@@ -22,7 +22,24 @@
           "required" : "true",
           "type" : "port",
           "default" : 9200
+        },
+        {
+          "name" : "default_graph",
+          "label" : "Path to the initial default graph to be loaded on startup.",
+          "description" : "The Fuseki default graph",
+          "required" : "true",
+          "type" : "string",
+          "default" : "/opt/fuseki/scripts/main/data/model.ttl"
+        },
+        {
+          "name" : "private_jdk_java8",
+          "label" : "Path to JAVA8, even if Hadoop runs on Java7.",
+          "description" : "Fuseki needs Java8",
+          "required" : "true",
+          "type" : "string",
+          "default" : "/opt/jdk1.8.0_72"
         }
+        
         ],
         "externalLink" : {
           "name" : "fuseki_web_ui",
@@ -37,9 +54,33 @@
           "program" : "scripts/control.sh",
           "args" : [ "start" ],
           "environmentVariables" : {
-           "WEBSERVER_PORT" : "${port_num}"         
+           "WEBSERVER_PORT" : "${port_num}",
+           "DEFAULT_GRAPH" : "${default_graph}",
+           "PRIVATE_JAVA_HOME" : "${private_jdk_java8}"                    
+                    
           }
-        }
+        },
+            "commands" : [
+    {
+      "name" : "role_cmd1",
+      "label" : "Fuseki content list",
+      "description" : "List all triples in a Fuseki server.",
+      "expectedExitCodes" : [0, 1],
+      "requiredRoleState" : "running",
+      "commandRunner" : {
+        "program" : "scripts/control.sh",
+        "args" : ["list"]
+      }
+    }
+ ]
+                
     }
   ]
 }
+
+
+
+
+
+
+PRIVATE_JAVA_HOME
