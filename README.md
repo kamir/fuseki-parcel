@@ -1,25 +1,29 @@
 # Fuseki-Parcel
-Let's deploy Apache Fuseki services in a CDH cluster via Cloudera Manager.
+Let's deploy some Apache Fuseki servers in a CDH cluster via Cloudera Manager.
 
-The repository provides all you need to create a parcel for automatic installation of Apache Fuseki as a service manageble by Cloudera Manager (see: https://github.com/cloudera/cm_ext for more details about parcels).
+The repository provides all you need to build a parcel for automatic installation of 
+Apache Fuseki as a service which is manageble by Cloudera Manager 
+(see: https://github.com/cloudera/cm_ext for more details about parcels).
 
 ---------------
 Known Issues:
 
-- The main folder is to big for shipping it in the CSV file => therefore we deploy it as parcel separately
+- The main folder is too big for shipping it in a CSD file => therefore we deploy Apache Fuseki incl. Jetty as parcel separately
 - The Fuseki client needs Ruby (sudo yum install ruby)
 - the path to Java8 is provided to the start script as a parameter "Private_JDK". 
-- Fuseki Server need Java8 
+- The Apache Fuseki Server needs Java8 
+
 ```sh
  sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u72-b15/jdk-8u72-linux-x64.tar.gz"
 ```
-
 ---------------
 
 # Installation 
 ## Prerequisites: 
 
-Start in an empty directory, such as YOUR_WORK_DIR/tmp.
+Start in an empty directory, such as "YOUR_WORK_DIR/tmp".
+
+###Prepare cm-tools in temp-folder
 
 ```sh
 cd tmp
@@ -28,8 +32,8 @@ cd cm_ext
 mvn clean compile install -Dmaven.test.skip=true
 ```
 
-Note: You should add this section to the <repoisitories/> in your POM file after cloning 
-the Apache Jena project, to have the latest snaphsots involved.
+Note: You should add this section to the <repoisitories/> section in your POM file 
+after cloning the Apache Jena project. This provides the latest snapshots for fresh builds.
 
 ```xml
   <repository>
@@ -44,7 +48,7 @@ the Apache Jena project, to have the latest snaphsots involved.
   </repository>
 ```
 
-`apache/jena-fuseki2`
+###Build Apache-Jena-Fuseki2 Server
 ```sh
 cd tmp
 git clone https://github.com/apache/jena
@@ -65,9 +69,9 @@ cd fuseki-parcel
 POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-parcel.sh ./../jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-csd.sh
 ```
-Note: You have to change the path $VALIDATOR_DIR. 
+Note: You have to change the variable: $VALIDATOR_DIR which is the path to the cm-tools created above. 
 
-In case you use the Cloudera Quickstart VM these commands will work:
+In case you use the Cloudera Quickstart VM the following example will work:
 ```sh
 cd tmp
 git clone http://github.com/kamir/fuseki-parcel
@@ -75,10 +79,12 @@ cd fuseki-parcel
 POINT_VERSION=1 VALIDATOR_DIR=/home/cloudera/tmp/cm_ext ./build-parcel.sh ./../jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
 VALIDATOR_DIR=/home/cloudera/tmp/cm_ext ./build-csd.sh
 ```
-Additionally, you have to install Java 8 to compile Jena. To skip this issue,
-we rely on the prebuild version (Apache Fuseki 2.3) which is part of this project already.
-No need to download or to compile for now, but we want to be prepared for later, especially
-id new featutes arrive in Fuseki land. 
+
+Here, we rely on the prebuild version (Apache Fuseki 2.3) which is part of this project already.
+This means, no need to download or to compile for Fuseki for now, but we want to be prepared for later, especially
+if new featutes arrive in Fuseki land. 
+
+Additionally, you would have to install Java 8 to compile Jena.
 
 ## Create the Parcel & CSD:
 ```sh
@@ -88,7 +94,6 @@ cd fuseki-parcel
 POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-parcel.sh ./../jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
 VALIDATOR_DIR=/Users/kamir/GITHUB/tmp/cm_ext ./build-csd.sh
 ```
-
 
 ## Serve Parcel using Python
 ```sh
@@ -116,11 +121,13 @@ sudo service cloudera-scm-server restart
 - Only one Fuseki Service is possible per cluster with this parcel.
 
 # Use-Cases:
-The Fuseki-Server should be installed on a Gateway node to enable internal and external access.
+The Fuseki-Server should be installed on a Gateway node to enable internal and external access to metadata exposed as
+a semantic network via SPARQL-queries.
 
-Primarily it is used for METADATA exposure as RDF graph. We use the Etosha tools to export Hive and HDFS metadata.
-Other sources are Cloudera Manager and Cloudera Navigator. This way we can savely control which details of highly
-sensitive internal metadata can be used by external tools in a standardized way.
+Primarily this parcel is used for METADATA exposure as RDF graph. We use Etosha tools to expose Hive and HDFS metadata.
+Other sources for such public METADATA exposure are: Cloudera Manager and Cloudera Navigator. This way we can savely 
+control which details of highly sensitive internal metadata can be used by external tools in a standardized way for 
+data exploration and data discovery in a de-centralized system.
 
 
 

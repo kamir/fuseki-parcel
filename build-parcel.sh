@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# We must run two commands ..
+# We must run two scripts to build Fuseki-Parcel.
 #
-# POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/fuseki-parcel/tmp/cm_ext ./build-parcel.sh tmp/jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
-# POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/fuseki-parcel/tmp/cm_ext ./build-csd.sh
+# POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/FusekiCloud/fuseki-parcel/tmp/cm_ext ./build-parcel.sh tmp/jena/jena-fuseki2/jena-fuseki-server/target/jena-fuseki-server-2.4.0-SNAPSHOT.jar
+# POINT_VERSION=1 VALIDATOR_DIR=/Users/kamir/GITHUB/FusekiCloud/fuseki-parcel/tmp/cm_ext ./build-csd.sh
 #
 #
 #
